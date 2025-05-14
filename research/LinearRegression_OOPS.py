@@ -18,7 +18,6 @@ class LinearRegression:
         PredictedValue = self.Prediction(20)
         print("Linear Regression Predicted Value :", PredictedValue)
 
-
     def RequiredCalculations(self):
         self.n = len(self.x)
         self.sum_x = np.sum(self.x)
