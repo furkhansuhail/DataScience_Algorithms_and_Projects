@@ -6,7 +6,7 @@ DataScience_Algorithms_and_Projects
 
 
 # Steps to Run the Codes 
-# End to end Text-Summarizer-Project
+# End to end DataScience Algorithm
 
 ## Workflows
 
@@ -18,3 +18,8 @@ DataScience_Algorithms_and_Projects
 6. update the pipeline
 7. update the main.py
 8. update the app.py
+
+
+## Basic Concept Code using OOPs concepts are stored in Research folder along with the logic being implemented in a pipeline manner 
+1. Linear Regression: <https://github.com/furkhansuhail/DataScience_Algorithms_and_Projects/blob/main/research/LinearRegression_OOPS.py>
+2. Logistic Regression: <https://github.com/furkhansuhail/DataScience_Algorithms_and_Projects/blob/main/research/LogisticRegression_OOPS.py> 
