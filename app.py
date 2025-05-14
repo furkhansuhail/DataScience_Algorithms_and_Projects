@@ -22,6 +22,12 @@ shutdown_button_html = """
 
 templates = Jinja2Templates(directory="templates")
 
+back_to_menu_button_html = """
+    <form action="/" method="get" style="margin-top: 20px;">
+        <input type="submit" value="Back to Main Menu" style="background-color:green; color:white;">
+    </form>
+"""
+
 
 # Step 1: Menu page
 @app.get("/", response_class=HTMLResponse)
@@ -45,7 +51,7 @@ async def display_menu(request: Request):
         <input type="submit" value="Submit">
     </form>
     """
-    return HTMLResponse(content=menu + shutdown_button_html, status_code=200)
+    return HTMLResponse(content=menu + back_to_menu_button_html + shutdown_button_html, status_code=200)
 
 
 # Step 2: Redirect to form for Option 1
@@ -66,9 +72,9 @@ async def get_input(menu_option: int = Form(...)):
             <input type="submit" value="Submit Lists">
         </form>
         """
-        return HTMLResponse(content=form_html + shutdown_button_html)
+        return HTMLResponse(content=form_html + back_to_menu_button_html + shutdown_button_html)
     else:
-        return HTMLResponse(content=f"<h2>You selected Option {menu_option}</h2>" + shutdown_button_html)
+        return HTMLResponse(content=f"<h2>You selected Option {menu_option}</h2>"+ back_to_menu_button_html + shutdown_button_html)
 
 
 # Step 3: Handle the two input lists
@@ -95,12 +101,13 @@ async def submit_lists(list1: str = Form(...), list2: str = Form(...), ValueTOPr
             <h3>Received List 1: {list1_values}</h3>
             <h3>Received List 2: {list2_values}</h3>
             <h3>Prediction for {ValueTOPredict[0]} is: {prediction}</h3>
+            {back_to_menu_button_html}
             {shutdown_button_html}
         """)
     except ValueError:
         return HTMLResponse(content="""
             <h3>Error: Please enter only numeric values, separated by commas.</h3>
-            """ + shutdown_button_html)
+            """ + back_to_menu_button_html + shutdown_button_html)
 
 
 # Graceful shutdown
