@@ -15,15 +15,17 @@ class LogisticRegression_Execution:
         self.learning_rate = LearningRate # 0.1
         self.epochs = Epochs #1000
 
-        self.ValueTOPredict = ValueTOPredict
+        self.targetValue = ValueTOPredict
         self.predicted_value = None
         self.main()
 
     def main(self):
-        print(self.x_inputs, self.y_inputs, self.ValueTOPredict)
-        LinearRegressionObj = LogisticRegression(self.x_inputs, self.y_inputs, self.ValueTOPredict,
+        # Create LogisticRegression instance
+        LinearRegressionObj = LogisticRegression(self.x_inputs, self.y_inputs, self.targetValue,
                                                  self.w, self.b, self.learning_rate, self.epochs)
 
-        self.predicted_value = LogisticRegression.train(self.ValueTOPredict[0])
+        # Call the predict method on the instance, passing the target value
+        self.predicted_value = LinearRegressionObj.predict(self.targetValue)
         print(self.predicted_value)
         return self.predicted_value
+
